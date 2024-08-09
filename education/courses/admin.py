@@ -1,6 +1,10 @@
 from django.contrib import admin
 
-from .models import Subject, Course
+from .models import Subject, Course, Module
+
+
+class ModuleInline(admin.StackedInline):
+    model = Module
 
 
 @admin.register(Subject)
@@ -23,3 +27,4 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ("title", "description")
     list_editable = ("title",)
     save_on_top = True
+    inlines = (ModuleInline,)
