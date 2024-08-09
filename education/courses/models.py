@@ -59,3 +59,30 @@ class Course(models.Model):
         ordering = ("-created_at",)
         verbose_name = "Курс"
         verbose_name_plural = "Курсы"
+
+
+class Module(models.Model):
+    """
+    This model describes module
+    """
+    title = models.CharField(
+        "Название",
+        max_length=250,
+    )
+    description = models.TextField(
+        "Описание",
+    )
+    course = models.ForeignKey(
+        Course,
+        on_delete=models.CASCADE,
+        related_name="modules",
+        verbose_name="Курс",
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ("title",)
+        verbose_name = "Модуль"
+        verbose_name_plural = "Модули"
