@@ -14,7 +14,6 @@ class SubjectAdmin(admin.ModelAdmin):
     list_display_links = ("title",)
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ("title",)
-    list_editable = ("title",)
     save_on_top = True
 
 
@@ -25,6 +24,5 @@ class CourseAdmin(admin.ModelAdmin):
     list_display_links = ("title",)
     prepopulated_fields = {"slug": ("title",)}
     search_fields = ("title", "description")
-    list_editable = ("title",)
     save_on_top = True
     inlines = (ModuleInline,)
