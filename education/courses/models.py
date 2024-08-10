@@ -1,4 +1,6 @@
 from django.contrib.auth.models import User
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
 
@@ -86,3 +88,23 @@ class Module(models.Model):
         ordering = ("title",)
         verbose_name = "Модуль"
         verbose_name_plural = "Модули"
+
+
+class Content(models.Model):
+    """
+    This model describes different types of content
+    """
+    module = models.ForeignKey(
+        Module,
+        on_delete=models.CASCADE,
+        related_name="content",
+    )
+    content_type = models.ForeignKey(
+        ContentType,
+        on_delete=models.CASCADE,
+    )
+    object_id = models.PositiveIntegerField()
+    item = GenericForeignKey(
+        "content_type",
+        "object_id",
+    )
