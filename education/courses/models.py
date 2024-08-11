@@ -108,3 +108,32 @@ class Content(models.Model):
         "content_type",
         "object_id",
     )
+
+
+class ItemBase(models.Model):
+    """
+    Abstract model which gives features to different types of content, that inherit from it
+    """
+    title = models.CharField(
+        "Название",
+        max_length=250,
+    )
+    created_at = models.DateTimeField(
+        "Создано",
+        auto_now_add=True,
+    )
+    updated_at = models.DateTimeField(
+        "Изменено",
+        auto_now=True,
+    )
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name="%(class)s_related"
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        abstract = True
