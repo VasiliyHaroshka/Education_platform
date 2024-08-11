@@ -137,3 +137,19 @@ class ItemBase(models.Model):
 
     class Meta:
         abstract = True
+
+
+class Text(ItemBase):
+    content = models.TextField()
+
+
+class File(ItemBase):
+    content = models.FileField(upload_to="files")
+
+
+class Image(ItemBase):
+    content = models.FileField(upload_to="images")
+
+
+class Video(ItemBase):
+    content = models.URLField()
