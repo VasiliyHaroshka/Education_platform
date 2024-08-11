@@ -102,6 +102,14 @@ class Content(models.Model):
     content_type = models.ForeignKey(
         ContentType,
         on_delete=models.CASCADE,
+        limit_choices_to={
+            "model__in": (
+                "text",
+                "file",
+                "image",
+                "video",
+            )
+        }
     )
     object_id = models.PositiveIntegerField()
     item = GenericForeignKey(
