@@ -26,3 +26,7 @@ class CourseAdmin(admin.ModelAdmin):
     search_fields = ("title", "description")
     save_on_top = True
     inlines = (ModuleInline,)
+
+
+admin.site.site_title = "Образовательная платформа"
+admin.site.site_header = "Образовательная платформа"
