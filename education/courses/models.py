@@ -123,6 +123,17 @@ class Content(models.Model):
         "content_type",
         "object_id",
     )
+    order = OrderField(
+        "Порядок",
+        blank=True,
+        for_fields=["module"],  # порядок контента в модуле
+    )
+
+    class Meta:
+        ordering = ("order",)
+        verbose_name = "Контент"
+        verbose_name_plural = "Контенты"
+
 
 
 class ItemBase(models.Model):
