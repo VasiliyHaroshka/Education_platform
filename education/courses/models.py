@@ -85,14 +85,14 @@ class Module(models.Model):
     order = OrderField(
         "Порядок",
         blank=True,
-        for_fields=["course"],  # порядок вычисляется относительно курса
+        for_fields=["course"],  # порядок модуля вычисляется относительно курса
     )
 
     def __str__(self):
-        return self.title
+        return f"№{self.order}. {self.title}"
 
     class Meta:
-        ordering = ("title",)
+        ordering = ("order",)
         verbose_name = "Модуль"
         verbose_name_plural = "Модули"
 
