@@ -3,6 +3,8 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 
+from .fields import OrderField
+
 
 class Subject(models.Model):
     """
@@ -79,6 +81,11 @@ class Module(models.Model):
         on_delete=models.CASCADE,
         related_name="modules",
         verbose_name="Курс",
+    )
+    order = OrderField(
+        "Порядок",
+        blank=True,
+        for_fields=["course"],  # порядок вычисляется относительно курса
     )
 
     def __str__(self):
