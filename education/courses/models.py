@@ -83,7 +83,6 @@ class Module(models.Model):
         verbose_name="Курс",
     )
     order = OrderField(
-        "Порядок",
         blank=True,
         for_fields=["course"],  # порядок модуля вычисляется относительно курса
     )
@@ -124,7 +123,6 @@ class Content(models.Model):
         "object_id",
     )
     order = OrderField(
-        "Порядок",
         blank=True,
         for_fields=["module"],  # порядок контента в модуле
     )
@@ -133,7 +131,6 @@ class Content(models.Model):
         ordering = ("order",)
         verbose_name = "Контент"
         verbose_name_plural = "Контенты"
-
 
 
 class ItemBase(models.Model):
