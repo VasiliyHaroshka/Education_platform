@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Education platform{% endblock title %}</title>
+</head>
+<body>
+    <div id="header">
+        <a href="/" class="logo">Educa</a>
+        <ul class="menu">
+            {% if not request.user.is_authenticated %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% else %}
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+        </ul>
+    </div>
+    <div id="content">
+        {% block content %} {% endblock %}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+        // DOM-модель загружена
+        {% block domready %}
+        {% endblock domready %}
+        })
+    </script>
+</body>
+</html>
