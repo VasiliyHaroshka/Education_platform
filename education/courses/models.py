@@ -55,6 +55,11 @@ class Course(models.Model):
         on_delete=models.CASCADE,
         verbose_name="Автор",
     )
+    subject = models.ForeignKey(
+        Subject,
+        on_delete=models.CASCADE,
+        related_name="courses"
+    )
 
     def __str__(self):
         return self.title
