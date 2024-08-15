@@ -1,5 +1,7 @@
+from django.views.generic import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 
+from .mixins import OwnerCourseEditMixin, OwnerCourseMixin
 from .models import Course
 
 
@@ -16,3 +18,15 @@ class CourseManageListView(ListView):
         """
         queryset = super().get_queryset()
         return queryset.filter(author=self.request.user)
+
+
+class CourseCreateView(OwnerCourseEditMixin, CreateView):
+    ...
+
+
+class CourseUpdateView(OwnerCourseEditMixin, UpdateView):
+    ...
+
+
+class CourseDeleteView(OwnerCourseMixin, DeleteView):
+    template_name = "courses/manage/course/delete.html"
