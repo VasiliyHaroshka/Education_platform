@@ -1,3 +1,5 @@
+from django.urls import reverse_lazy
+
 from .models import Course
 
 
@@ -7,12 +9,4 @@ class OwnerMixin:
         return queryset.filter(author=self.request.user)
 
 
-class OwnerEditMixin:
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        return super().form_valid(form)
 
-
-class OwnerCourseMixin(OwnerMixin):
-    model = Course
-    fields = ("title", "")
