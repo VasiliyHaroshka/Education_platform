@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 
 from .models import Course
@@ -23,9 +24,10 @@ class OwnerEditMixin:
         return super().form_valid(form)
 
 
-class OwnerCourseMixin(OwnerMixin):
+class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin, PermissionRequiredMixin):
     """
-    Gives model, fields and success_url
+    Gives model, fields and success_url.
+    Also add constrictions login required and permission required.
     """
     model = Course
     fields = ("title", "slug", "subject", "description")
