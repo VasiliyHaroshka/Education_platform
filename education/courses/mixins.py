@@ -31,11 +31,11 @@ class OwnerCourseMixin(OwnerMixin, LoginRequiredMixin, PermissionRequiredMixin):
     """
     model = Course
     fields = ("title", "slug", "subject", "description")
-    success_url = reverse_lazy('manage_course_list')
+    success_url = reverse_lazy("manage_course_list")
 
 
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
     """
     Gives template_name
     """
-    template_name = "courses/manage/course/list.html"
+    template_name = "courses/manage/course/form.html"
