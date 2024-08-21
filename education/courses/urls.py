@@ -6,6 +6,7 @@ from .views import (
     CourseUpdateView,
     CourseDeleteView,
     CourseAndModuleUpdateView,
+    ContentCreateAndUpdateView,
 )
 
 urlpatterns = [
@@ -14,4 +15,9 @@ urlpatterns = [
     path("<int:pk>/change/", CourseUpdateView.as_view(), name="change_course"),
     path("<int:pk>/delete/", CourseDeleteView.as_view(), name="delete_course"),
     path("<int:pk>/module/", CourseAndModuleUpdateView.as_view(), name="course_module_update"),
+
+    path("module/<int:module_id>/content/<model_name>/create",
+         ContentCreateAndUpdateView.as_view(), name="module_content_create"),
+    path("module/<int:module_id>/content/<model_name>/<id>",
+         ContentCreateAndUpdateView.as_view(), name="module_content_update"),
 ]
