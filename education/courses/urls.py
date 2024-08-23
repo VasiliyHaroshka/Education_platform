@@ -8,6 +8,7 @@ from .views import (
     CourseAndModuleUpdateView,
     ContentCreateAndUpdateView,
     ContentDeleteView,
+    AllModuleContentListView,
 )
 
 urlpatterns = [
@@ -22,4 +23,5 @@ urlpatterns = [
     path("module/<int:module_id>/content/<model_name>/<id>/",
          ContentCreateAndUpdateView.as_view(), name="module_content_update"),
     path("content/<int:id>/delete/", ContentDeleteView.as_view(), name="module_content_delete"),
+    path("module/<int:module_id>/", AllModuleContentListView.as_view(), name="module_content_list"),
 ]
