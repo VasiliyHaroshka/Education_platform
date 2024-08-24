@@ -155,6 +155,7 @@ class AllModuleContentListView(TemplateResponseMixin, View):
     """
     Display all modul of the course
     """
+    template_name = "courses/manage/module/content_list.html"
 
     def get(self, request, module_id):
         module = get_object_or_404(
