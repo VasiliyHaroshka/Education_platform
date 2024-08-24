@@ -8,18 +8,19 @@
     <title>{% block title %}Education platform{% endblock title %}</title>
 </head>
 <body>
-    <div id="header">
-        <a href="/" class="logo">Education platform</a>
-        <ul class="menu">
-            {% if request.user.is_authenticated %}
-                <li><a href="{% url 'logout' %}">Logout</a></li>
-            {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
-            {% endif %}
-        </ul>
-    </div>
-    <div id="content">
-        {% block content %} {% endblock %}
-    </div>
+<div id="header">
+    <a href="/" class="logo">Education platform</a>
+    <ul class="menu">
+        {% if request.user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% else %}
+            <li><a href="{% url 'login' %}">Login</a></li>
+        {% endif %}
+    </ul>
+</div>
+<div id="content">
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>

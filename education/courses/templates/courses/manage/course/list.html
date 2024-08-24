@@ -3,22 +3,22 @@
 {% block title %}My courses{% endblock title %}
 
 {% block content %}
-    <h1>My courses</h1>
-    <div class="courses">
-        {% for course in object_list %}
-            <div class="course-info">
-                <h3>{{ course.title }}</h3>
-                <p>
-                    <a href="{% url 'change_course' course.id %}">Change</a>
-                    <a href="{% url 'delete_course' course.id %}">Delete</a>
-                    <a href="{% url 'course_module_update' course.id %}">Edit modules</a>
-                </p>
-            </div>
-        {% empty %}
-            <p>You don't hane any courses.</p>
-        {% endfor %}
+<h1>My courses</h1>
+<div class="courses">
+    {% for course in object_list %}
+    <div class="course-info">
+        <h3>{{ course.title }}</h3>
         <p>
-            <a href="{% url 'create_course' %}" class="button">Create a new course</a>
+            <a href="{% url 'change_course' course.id %}">Change</a>
+            <a href="{% url 'delete_course' course.id %}">Delete</a>
+            <a href="{% url 'course_module_update' course.id %}">Edit modules</a>
         </p>
     </div>
+    {% empty %}
+        <p>You don't hane any courses.</p>
+    {% endfor %}
+    <p>
+        <a href="{% url 'create_course' %}" class="button">Create a new course</a>
+    </p>
+</div>
 {% endblock content %}
